@@ -51,7 +51,7 @@ function PingPongPass({ fragmentShader, uniforms, textureRef }) {
   )
 
   useFrame(({ clock }) => {
-    const numSteps = 4.;
+    const numSteps = 6.;
     for (let i = 0; i < numSteps; i++) {
       uniforms.uTime.value = clock.elapsedTime
       uniforms.uTexture.value = ping.current
@@ -175,14 +175,14 @@ const Background = ({ mouse }) => {
       vec2 mouse = vec2(uMouse.x, uMouse.y*asp);
       vec2 prevMouse = vec2(uPrevMouse.x, uPrevMouse.y*asp);
 
-      vec2 uPix2 =  vec2(uPix.x*4.,uPix.y*4.);
+      vec2 uPix2 =  vec2(uPix.x,uPix.y);
       vec4 prev = texture2D(uTexture, vec2(vUv.x, vUv.y));
       vec4 prevTop = texture2D(uTexture, vec2(vUv.x, vUv.y - uPix2.y));
       vec4 prevBottom = texture2D(uTexture, vec2(vUv.x, vUv.y + uPix2.y));
       vec4 prevLeft = texture2D(uTexture, vec2(vUv.x - uPix2.x, vUv.y));
       vec4 prevRight = texture2D(uTexture, vec2(vUv.x + uPix2.x, vUv.y));
       float impulse = 0.;
-      float damp = 1.5;
+      float damp = 1.;
       float k = 1000.;
       
 
