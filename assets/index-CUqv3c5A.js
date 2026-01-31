@@ -4033,7 +4033,7 @@ No matching component was found for:
             vUv = uv;
             gl_Position = vec4(position, 1.0);
           }
-        `,fragmentShader:o}),[o,e]),g=St.useMemo(()=>{const x=new Sy,b=new Oi(new tf(2,2),m);return x.add(b),x},[m]),_=St.useMemo(()=>new af(-1,1,1,-1,0,1),[]);return ZS(({clock:x})=>{for(let M=0;M<4;M++){e.uTime.value=x.elapsedTime,e.uTexture.value=h.current?f.texture:u.texture;const A=h.current?u:f;i.setRenderTarget(A),i.render(g,_),i.setRenderTarget(null),h.current=!h.current,t.current=h.current?f.texture:u.texture}}),null}function OO(){const o=St.useRef({value:[]}),[e,t]=St.useState(0),[i,a]=St.useState(0),u=f=>{o.current[0]=f.clientX,o.current[1]=f.clientY,t(-Number(f.clientX)/100),a(Number(f.clientY)/100)};return St.useRef(null),Hn.jsx(Hn.Fragment,{children:Hn.jsxs(LO,{orthographic:!0,camera:{zoom:1,position:[0,0,1e3],near:-2e3,far:2e3},onMouseMove:u,children:[Hn.jsx("directionalLight",{intensity:12.5,position:[1e3,-1e3,1e3]}),Hn.jsx(PO,{mouse:o})]})})}const PO=({mouse:o})=>{const e=St.useRef({value:[0,0]}),t=St.useRef({value:[0,0]}),i=St.useRef({value:0}),a=St.useRef({value:[0,0]}),u=St.useRef(null),f=St.useRef({uTexture:{value:null},uTime:{value:0},uDecay:{value:.99},uStrength:{value:.01},uMouse:e.current,uPrevMouse:t.current,uPix:a.current,dt:i.current});return ZS((m,g)=>{t.current.value=[...e.current.value],e.current.value[0]=m.pointer.x*.5+.5,e.current.value[1]=m.pointer.y*.5+.5,a.current.value[0]=1/m.size.width,a.current.value[1]=1/m.size.height,i.current.value=Math.min(g,1/50)}),Hn.jsxs(Hn.Fragment,{children:[Hn.jsx(IO,{fragmentShader:`
+        `,fragmentShader:o}),[o,e]),g=St.useMemo(()=>{const x=new Sy,b=new Oi(new tf(2,2),m);return x.add(b),x},[m]),_=St.useMemo(()=>new af(-1,1,1,-1,0,1),[]);return ZS(({clock:x})=>{for(let M=0;M<6;M++){e.uTime.value=x.elapsedTime,e.uTexture.value=h.current?f.texture:u.texture;const A=h.current?u:f;i.setRenderTarget(A),i.render(g,_),i.setRenderTarget(null),h.current=!h.current,t.current=h.current?f.texture:u.texture}}),null}function OO(){const o=St.useRef({value:[]}),[e,t]=St.useState(0),[i,a]=St.useState(0),u=f=>{o.current[0]=f.clientX,o.current[1]=f.clientY,t(-Number(f.clientX)/100),a(Number(f.clientY)/100)};return St.useRef(null),Hn.jsx(Hn.Fragment,{children:Hn.jsxs(LO,{orthographic:!0,camera:{zoom:1,position:[0,0,1e3],near:-2e3,far:2e3},onMouseMove:u,children:[Hn.jsx("directionalLight",{intensity:12.5,position:[1e3,-1e3,1e3]}),Hn.jsx(PO,{mouse:o})]})})}const PO=({mouse:o})=>{const e=St.useRef({value:[0,0]}),t=St.useRef({value:[0,0]}),i=St.useRef({value:0}),a=St.useRef({value:[0,0]}),u=St.useRef(null),f=St.useRef({uTexture:{value:null},uTime:{value:0},uDecay:{value:.99},uStrength:{value:.01},uMouse:e.current,uPrevMouse:t.current,uPix:a.current,dt:i.current});return ZS((m,g)=>{t.current.value=[...e.current.value],e.current.value[0]=m.pointer.x*.5+.5,e.current.value[1]=m.pointer.y*.5+.5,a.current.value[0]=1/m.size.width,a.current.value[1]=1/m.size.height,i.current.value=Math.min(g,1/50)}),Hn.jsxs(Hn.Fragment,{children:[Hn.jsx(IO,{fragmentShader:`
     varying vec2 vUv;
     uniform sampler2D uTexture;
     uniform float uTime;
@@ -4064,14 +4064,14 @@ No matching component was found for:
       vec2 mouse = vec2(uMouse.x, uMouse.y*asp);
       vec2 prevMouse = vec2(uPrevMouse.x, uPrevMouse.y*asp);
 
-      vec2 uPix2 =  vec2(uPix.x*4.,uPix.y*4.);
+      vec2 uPix2 =  vec2(uPix.x,uPix.y);
       vec4 prev = texture2D(uTexture, vec2(vUv.x, vUv.y));
       vec4 prevTop = texture2D(uTexture, vec2(vUv.x, vUv.y - uPix2.y));
       vec4 prevBottom = texture2D(uTexture, vec2(vUv.x, vUv.y + uPix2.y));
       vec4 prevLeft = texture2D(uTexture, vec2(vUv.x - uPix2.x, vUv.y));
       vec4 prevRight = texture2D(uTexture, vec2(vUv.x + uPix2.x, vUv.y));
       float impulse = 0.;
-      float damp = 1.5;
+      float damp = 1.;
       float k = 1000.;
       
 
